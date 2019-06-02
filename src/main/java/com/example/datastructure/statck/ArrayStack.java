@@ -2,7 +2,7 @@ package com.example.datastructure.statck;
 
 /**
  * Demo class
- *基于数组简单实现一个栈
+ *基于数组简单实现一个栈，也叫顺序栈
  * @author drose
  * @date 2019/6/2 21:07
  */
