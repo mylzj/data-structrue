@@ -29,7 +29,7 @@ public class ArrayStack {
        return true;
     }
 
-    //初栈操作
+    //出栈操作
     public String pop(String str){
         if(currentCount==0){
             return null;
