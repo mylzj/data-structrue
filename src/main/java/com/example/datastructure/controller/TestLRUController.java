@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/LRU")
 public class TestLRUController {
-    private LRUByLinkedHashMap lru=new LRUByLinkedHashMap(5);
+    private LRUByLinkedHashMap lru = new LRUByLinkedHashMap(5);
 
     @ResponseBody
     @GetMapping("/add/{value}")
-    public String getAll(@PathVariable String value){
+    public String getAll(@PathVariable String value) {
         this.lru.add(value);
         this.lru.getAll();
         return "200";

@@ -26,9 +26,9 @@ public class DataStructureApplicationTests {
         arrayStack.push("2");
         boolean push = arrayStack.push("3");
 //        boolean push = arrayStack.push("4");
-        if(push){
+        if (push) {
             System.out.println("true");
-        }else {
+        } else {
             System.out.println("false");
         }
     }

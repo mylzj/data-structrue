@@ -2,7 +2,8 @@ package com.example.datastructure.LinkedList;
 
 /**
  * Demo class
- *单链表简单实现LRU缓存淘汰算法
+ * 单链表简单实现LRU缓存淘汰算法
+ *
  * @author drose
  * @date 2019/5/22 23:03
  */
@@ -17,18 +18,18 @@ public class LRUByLinkedHashMap<T> {
     //链表长度
     private int length;
 
-    public LRUByLinkedHashMap(){
+    public LRUByLinkedHashMap() {
         //初始化时，头结点默认下个指向为空，因此使用这个构造方法
-        this.headNode=new LNode<>();
-        this.capacity=DEFAULT_CAPACITY;
-        this.length=0;
+        this.headNode = new LNode<>();
+        this.capacity = DEFAULT_CAPACITY;
+        this.length = 0;
     }
 
-    public LRUByLinkedHashMap(int capacity){
+    public LRUByLinkedHashMap(int capacity) {
         //初始化时，头结点默认下个指向为空，因此使用这个构造方法
-        this.headNode=new LNode<>();
-        this.capacity=capacity;
-        this.length=0;
+        this.headNode = new LNode<>();
+        this.capacity = capacity;
+        this.length = 0;
     }
 
     //插入操作
@@ -78,8 +79,8 @@ public class LRUByLinkedHashMap<T> {
         }
 
         //倒数第二个
-        while (next.getNext().getNext()!=null){
-            next=next.getNext();
+        while (next.getNext().getNext() != null) {
+            next = next.getNext();
         }
         next.setNext(null);
         length--;
@@ -112,11 +113,11 @@ public class LRUByLinkedHashMap<T> {
     }
 
     //查找全部
-    public void getAll(){
+    public void getAll() {
         LNode next = headNode.getNext();
-        while (next!=null){
-            System.out.print(next.getData()+",");
-            next=next.getNext();
+        while (next != null) {
+            System.out.print(next.getData() + ",");
+            next = next.getNext();
         }
         System.out.println(" ");
     }
