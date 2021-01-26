@@ -2,6 +2,7 @@ package com.example.datastructure.CommonAlgorithm;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @Description 常用排序算法实现
@@ -10,7 +11,7 @@ import java.util.List;
  */
 public class SortAlgorithm {
     public static void main(String[] args) {
-        int[] a = new int[]{9,7,11,6,8};
+        int[] a = new int[]{9, 7, 11, 6, 8};
 //        insertSort(a);
 //        selectSort(a);
 //        bubbleSort(a);
@@ -80,7 +81,8 @@ public class SortAlgorithm {
         // 确定递归思想，推出递归公式，sort(Array(n)) = sort(Array(0,i-1))+sort(Array(i,n))
 
         int n = a.length;
-        merge(a, 0, n-1);
+        merge(a, 0, n - 1);
+
 
     }
 
@@ -89,37 +91,33 @@ public class SortAlgorithm {
             return;
         }
 
-        int part = part(a, start, end-1);
-        merge(a, start, part - 1);
-        merge(a, part + 1, end);
+        // 找出中间节点i，随机生成一个
+        Random random = new Random();
+        int part = start + random.nextInt(end - start+1);
+        // 将中间节点先放在最后面
+        swap(a, part, end);
 
-    }
-
-    /**
-     * 对数组进行排序，用一个下标i来区分，将数据分成两批，
-     * 一批排序的（初始都是指向第一个数），一批未排序。最后返回i的位置，即是那个随机数的下标
-     *
-     * @param a
-     * @param start
-     * @param end
-     * @return
-     */
-    private static int part(int[] a, int start, int end) {
-        int pivot = a[end];
-        int j = start;
-        for (int i = start; i < end; i++) {
-            if (a[i] < pivot) {
+        // 使用挡板发进行比较，交换
+        int i = start;
+        int j = end - 1;
+        int temp = a[end];
+        while (i <= j) {
+            if (a[i] <= temp) {
+                i++;
+            } else {
                 swap(a, i, j);
-                j++;
+                j--;
             }
         }
-        swap(a, j, end);
-        return j;
+        swap(a,i,end);
+        merge(a, start, i - 1);
+        merge(a, i, end);
     }
 
-    private static void swap(int[] a, int i, int j) {
-        int temp = a[i];
-        a[i] = a[j];
-        a[j] = temp;
+    private static void swap(int[] a, int start, int end) {
+        int temp = a[start];
+        a[start] = a[end];
+        a[end] = temp;
     }
+
 }
